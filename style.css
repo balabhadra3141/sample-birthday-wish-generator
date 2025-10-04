@@ -1,0 +1,210 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap');
+
+*{
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Fredoka', sans-serif;
+    background: linear-gradient(135deg, #FFDEE9, #B5FFFC);
+    padding: 40px 20px;
+    text-align: center;
+    overflow-x: hidden;
+    color: #333;
+    scrollbar-width: none;
+    overflow: hidden;    
+}
+
+h1 {
+    font-size: 2.4em;
+    margin-bottom: 10px;
+    color: #ff4081;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+p {
+    font-size: 1.1em;
+    margin-bottom: 20px;
+    padding: 0 10px;
+}
+
+label {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+input {
+    font-size: 1.1em;
+    padding: 10px 12px;
+    margin-right: 1rem;
+    border-radius: 8px;
+    border: 2px solid #ff4081;
+    outline: none;
+    width: 160px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+input:focus {
+    border-color: #2196f3;
+    box-shadow: 0 0 8px #2196f3aa;
+}
+
+button {
+    font-size: 1.1em;
+    padding: 10px 16px;
+    background: linear-gradient(to right, #ff4081, #ff8a65);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease, background 0.3s ease;
+}
+
+button:hover {
+    transform: scale(1.05);
+    background: linear-gradient(to right, #f06292, #ff7043);
+}
+
+button:active {
+    transform: scale(0.97);
+}
+
+#output {
+    margin-top: 35px;
+    font-size: 1.4em;
+    padding: 20px;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    color: #4a148c;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 0.5s ease-in-out;
+    word-wrap: break-word;
+    max-width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#output.show {
+    opacity: 1;
+    transform: scale(1);
+}
+
+#output.error {
+    animation: shake 0.5s;
+    background: #ffe5e5;
+    color: #d32f2f;
+    opacity: 1;
+}
+
+@keyframes shake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    20%,
+    60% {
+        transform: translateX(-8px);
+    }
+
+    40%,
+    80% {
+        transform: translateX(8px);
+    }
+}
+
+.confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: hsl(var(--hue), 100%, 70%);
+    top: -10px;
+    animation: fall linear forwards;
+    border-radius: 50%;
+    opacity: 0.8;
+    z-index: 10;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh) rotateZ(360deg);
+        opacity: 0;
+    }
+}
+
+.balloon {
+    position: absolute;
+    bottom: -50px;
+    left: 50%;
+    width: 40px;
+    height: 50px;
+    background: radial-gradient(circle at 30% 30%, #ff8a80, #e53935);
+    border-radius: 50% 50% 45% 45%;
+    animation: floatUp linear forwards;
+    z-index: 5;
+}
+
+.balloon::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    width: 2px;
+    height: 20px;
+    background-color: #555;
+    transform: translateX(-50%);
+}
+
+.balloon::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    border: 1px dashed #888;
+    border-radius: 50%;
+    transform: translateX(-50%) scaleX(0.5) scaleY(1.5);
+    opacity: 0.4;
+}
+
+@keyframes floatUp {
+    from {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateY(-130vh);
+        opacity: 0;
+    }
+}
+
+/* 📱 MOBILE RESPONSIVENESS */
+@media (max-width: 600px) {
+    body {
+        padding: 30px 15px;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+    input,
+    button {
+        font-size: 1em;
+        margin-bottom: 1rem;
+        margin-right: 0;
+    }
+
+    #output {
+        font-size: 1.1em;
+        padding: 15px;
+    }
+}
